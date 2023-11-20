@@ -1,0 +1,26 @@
+// controllers
+const {{ camelCase name }}Controller = require('./controller')
+
+// middlewares
+// const authentication = require('../../middleware/authentication')
+
+module.exports = ({ router }) => router
+  .prefix('/{{ pluralKebabCase name }}')
+
+  .post(
+    '/list',
+    ctx => (ctx.status = 503),
+    {{ camelCase name }}Controller.list
+  )
+
+  .post(
+    '/',
+    ctx => (ctx.status = 503),
+    {{ camelCase name }}Controller.store
+  )
+
+  .patch(
+    '/',
+    ctx => (ctx.status = 503),
+    {{ camelCase name }}Controller.patch
+  )

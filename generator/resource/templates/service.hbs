@@ -1,0 +1,21 @@
+const knex = require('../../configs/knex')
+
+module.exports = {
+  async list (request) {
+    const list = await knex('{{pluralSnakeCase name}}').where(request)
+
+    return list
+  },
+
+  async store (request) {
+    const [id] = await knex('{{ pluralSnakeCase name }}').insert(request)
+
+    return id
+  },
+
+  async modify (request) {
+    const [id] = await knex('{{ pluralSnakeCase name }}').update(request)
+
+    return id
+  }
+}

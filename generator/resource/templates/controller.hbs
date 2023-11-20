@@ -1,0 +1,39 @@
+// services
+const {{camelCase name}}Service = require('./service')
+
+// libraries
+const Joi = require('joi')
+
+module.exports = {
+  async list (ctx) {
+    const request = ctx.request.body
+
+    ctx.body = await {{camelCase name}}Service.list(request)
+  },
+
+  async store (ctx) {
+    const schema = Joi.object({/* schema here */})
+
+    try {
+      const request = await schema.validateAsync(ctx.request.body)
+      const response = await {{camelCase name}}Service.store(request)
+
+      ctx.body = response
+    } catch (error) {
+      ctx.throw(400, error)
+    }
+  },
+
+  async patch (ctx) {
+    const schema = Joi.object({/* schema here */})
+
+    try {
+      const request = await schema.validateAsync(ctx.request.body)
+      const response = await {{camelCase name}}Service.modify(request)
+
+      ctx.body = response
+    } catch (error) {
+      ctx.throw(400, error)
+    }
+  }
+}
